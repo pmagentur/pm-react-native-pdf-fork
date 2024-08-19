@@ -360,7 +360,7 @@ export default class Pdf extends Component {
                 page: pageNumber
             });
           }
-        
+
     }
 
     _onChange = (event) => {
@@ -408,7 +408,7 @@ export default class Pdf extends Component {
     render() {
         if (Platform.OS === "android" || Platform.OS === "ios" || Platform.OS === "windows") {
                 return (
-                    <View style={[this.props.style,{overflow: 'hidden'}]}>
+                    <View style={[{flex: 1, overflow: 'hidden'}]}>
                         {!this.state.isDownloaded?
                             (<View
                                 style={[styles.progressContainer, this.props.progressContainerStyle]}
@@ -421,7 +421,7 @@ export default class Pdf extends Component {
                                         <PdfCustom
                                             ref={component => (this._root = component)}
                                             {...this.props}
-                                            style={[{flex:1,backgroundColor: '#EEE'}, this.props.style]}
+                                            style={[{backgroundColor: '#EEE', flex: 1}, this.props.style]}
                                             path={this.state.path}
                                             onChange={this._onChange}
                                         />
@@ -430,13 +430,13 @@ export default class Pdf extends Component {
                                                 <PdfCustom
                                                     ref={component => (this._root = component)}
                                                     {...this.props}
-                                                    style={[{backgroundColor: '#EEE',overflow: 'hidden'}, this.props.style]}
+                                                    style={[{backgroundColor: '#EEE',overflow: 'hidden', flex: 1}, this.props.style]}
                                                     path={this.state.path}
                                                     onChange={this._onChange}
                                                 />
                                             ):(<PdfView
                                                 {...this.props}
-                                                style={[{backgroundColor: '#EEE',overflow: 'hidden'}, this.props.style]}
+                                                style={[{backgroundColor: '#EEE',overflow: 'hidden', flex: 1}, this.props.style]}
                                                 path={this.state.path}
                                                 onLoadComplete={this.props.onLoadComplete}
                                                 onPageChanged={this.props.onPageChanged}
